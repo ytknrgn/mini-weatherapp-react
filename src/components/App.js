@@ -1,6 +1,5 @@
 import React from 'react';
 import Thumbs from './Thumbs';
-import Thumb from './Thumb';
 import Info from './Info';
 import Search from './Search';
 
@@ -10,8 +9,6 @@ class App extends React.Component {
 
     this.state = {  city: 'london', 
                     condition: '',
-                    currentImage: { urls: {regular: ''}, 
-                                    user: {name: ''}},
                     imagesArray: []};
     this.receiveSearch = this.receiveSearch.bind(this);
     this.setCurrentImage = this.setCurrentImage.bind(this);
@@ -62,10 +59,10 @@ class App extends React.Component {
         </header>
 
         <figure className="photo" id="photo">
-          <img src={this.state.currentImage.urls.regular}></img>
-          </figure>
+          {this.state.currentImage && <img src={this.state.currentImage.urls.regular}></img> }
+        </figure>
 
-        <Info currentImage={this.state.currentImage} condition={this.state.condition} />
+        {this.state.currentImage && <Info currentImage={this.state.currentImage} condition={this.state.condition} />}
         <Thumbs setCurrentImage={this.setCurrentImage} imagesArray={this.state.imagesArray}/>
         <Search receiveSearch={this.receiveSearch}/>
       </main>
