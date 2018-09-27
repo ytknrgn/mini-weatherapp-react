@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Thumbs extends React.Component {
+class Info extends React.Component {
   render(){
     return (
       <div className="info">
@@ -15,4 +15,4 @@ class Thumbs extends React.Component {
   }
 }
 
-export default Thumbs;
+export default Info;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Thumb from './Thumb';
 
 class Thumbs extends React.Component {
   render(){
