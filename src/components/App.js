@@ -10,9 +10,11 @@ class App extends React.Component {
 
     this.state = {  city: 'london', 
                     condition: '',
-                    currentImage: {},
+                    currentImage: { urls: {regular: ''}, 
+                                    user: {name: ''}},
                     imagesArray: []};
     this.receiveSearch = this.receiveSearch.bind(this);
+    this.setCurrentImage = this.setCurrentImage.bind(this);
   }
 
   fetchData(city) {
@@ -45,6 +47,10 @@ class App extends React.Component {
     this.fetchData(search);
   }
 
+  setCurrentImage(currentImage) {
+    this.setState({currentImage})
+  }
+
   render() {
     return (
       <main className="content">
@@ -55,10 +61,12 @@ class App extends React.Component {
           </h1>
         </header>
 
-        <figure className="photo" id="photo"></figure>
+        <figure className="photo" id="photo">
+          <img src={this.state.currentImage.urls.regular}></img>
+          </figure>
 
-        <Info />
-        <Thumbs />
+        <Info currentImage={this.state.currentImage} condition={this.state.condition} />
+        <Thumbs setCurrentImage={this.setCurrentImage} imagesArray={this.state.imagesArray}/>
         <Search receiveSearch={this.receiveSearch}/>
       </main>
     );
